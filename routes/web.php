@@ -9,4 +9,4 @@ Route::get('/', function () {
 });
 
 //Pour la page d'accueil
-Route::get('/accueil', [AccueilController::class, 'accueil']);
+Route::get('/accueil', [AccueilController::class, 'accueil'])->name('accueil');
