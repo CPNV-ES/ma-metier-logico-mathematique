@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\Http\Controllers\AccueilController;
+use App\Http\Controllers\HomepageController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -11,7 +11,7 @@ Route::get('/', function () {
 //Pour la page d'accueil
 //Route::get('/accueil', [AccueilController::class, 'accueil'])->name('accueil');
 
-Route::prefix('/homepage')->name('homepage.')->controller(AccueilController::class)->group(function(){
+Route::prefix('/homepage')->name('homepage.')->controller(HomepageController::class)->group(function(){
     //Page d'accueil
     Route::get('/','homepage')->name('homepage');
     //Page de login
