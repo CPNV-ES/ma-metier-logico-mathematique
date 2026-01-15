@@ -8,8 +8,8 @@ use Illuminate\View\View;
 class AccueilController extends Controller
 {
     //appelle la page d'accueil
-    public function accueil (): View {
-        return view('accueil');
+    public function homepage (): View {
+        return view('homepage');
     }
 
     //appelera la page de login
@@ -23,7 +23,7 @@ class AccueilController extends Controller
     }
 
     //appelera la page avec tous les élèves de la classe
-    public function classe (){
+    public function classes (){
         return "Listes des élèves";
     }
 }
