@@ -23,7 +23,18 @@ class HomepageController extends Controller
     }
 
     //appelera la page avec tous les élèves de la classe
-    public function classes (){
+    public function classes (/*string $nomclasse*/){
         return "Listes des élèves";
+        //Avec la BD
+        /* */
+    }
+
+    //jsp encore mais c'est pour les classes
+    public function jsp(Request $request){
+        //debug pour afficher ce que la personne à entrer
+        dd($request->all());
+        //Avec la BD
+        /* $tableclasse = \App\Models\tableclasse::findOrFail($code);
+        return redirect()->route('homepage.classes', 'nomclasse'=>$tableclasse->nomclasse); */
     }
 }
