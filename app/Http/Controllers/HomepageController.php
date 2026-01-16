@@ -12,14 +12,14 @@ class HomepageController extends Controller
         return view('homepage');
     }
 
-    //appelera la page de login
-    public function login (){
-        return "login";
+    //appelle la page de login
+    public function login (): View {
+        return view('login');
     }
 
-    //appelera la page de création de compte
-    public function newAccount (){
-        return "Nouveau compte";
+    //appelle la page de création de compte
+    public function newAccount (): View {
+        return view('newAccount');
     }
 
     //appelera la page avec tous les élèves de la classe

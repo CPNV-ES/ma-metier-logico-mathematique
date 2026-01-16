@@ -10,7 +10,7 @@
     <form action="" method="post">
         @csrf
         <!-- Champ pour mdp de classe, type number pour que les enfants voient ce qu'ils tapent -->
-        <input type="number" name="ClassCode">
+        <input type="password" name="ClassCode">
         <button>Valider</button>
     </form>
 @endsection
