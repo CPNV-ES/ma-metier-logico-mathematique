@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SchoolClass;
 use Illuminate\Http\Request;
+use App\Models\Student;
 
 class SchoolClassController extends Controller
 {
@@ -36,7 +37,8 @@ class SchoolClassController extends Controller
      */
     public function show(SchoolClass $schoolClass)
     {
-        return "Listes des élèves";
+        $students = Student::all();
+        return view('schoolclass.show', compact('students'));
     }
 
     /**
