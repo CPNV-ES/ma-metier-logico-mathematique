@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\TeacherRegisteredUserController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Auth\TeacherAuthenticatedSessionController;
 use App\Http\Controllers\HomepageController;
 
 Route::get('/', function () {
@@ -16,11 +17,34 @@ Route::prefix('/homepage')->name('homepage.')->controller(HomepageController::cl
     Route::get('/','homepage')->name('homepage');
     //pour le formulaire, travail en cours
     Route::post('/','resolveClassByCode');
-    //Page de login
-    Route::get('/login','login')->name('login');
-    //Page création de compte
-    Route::get('/new','newAccount')->name('newAccount');
+
     //Page liste d'élève de la classe, a modifier !
     //Route::get('/classes','classes')->name('classes');
     Route::get('/classes/{name}','classes')->name('classes');
+});
+
+
+
+Route::middleware('guest:teacher')->group(function () {
+    Route::get('/teacher/login', [TeacherAuthenticatedSessionController::class, 'create'])
+        ->name('teacher.login');
+
+    Route::post('/teacher/login', [TeacherAuthenticatedSessionController::class, 'store'])
+        ->name('teacher.login.store');
+});
+
+Route::middleware('auth:teacher')->group(function () {
+    Route::post('/teacher/logout', [TeacherAuthenticatedSessionController::class, 'destroy'])
+        ->name('teacher.logout');
+
+    Route::get('/teacher/dashboard', fn () => view('teacher.dashboard'))
+        ->name('teacher.dashboard');
+});
+
+Route::middleware('guest:teacher')->group(function () {
+    Route::get('/teacher/register', [TeacherRegisteredUserController::class, 'create'])
+        ->name('teacher.register');
+
+    Route::post('/teacher/register', [TeacherRegisteredUserController::class, 'store'])
+        ->name('teacher.register.store');
 });
