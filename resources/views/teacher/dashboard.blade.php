@@ -18,7 +18,7 @@
 
 <nav>
     <ul>
-        {{--<li><a href="{{ route('school-classes.index') }}">Mes classes</a></li>--}}
+        <li><a href="{{ route('homepage.index') }}">Page d'accueil</a></li>
     </ul>
 </nav>
 
