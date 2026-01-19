@@ -1,48 +1,43 @@
-<!doctype html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Connexion enseignant</title>
-</head>
-<body>
-<h1>Connexion enseignant</h1>
+@extends('layout')
 
-@if ($errors->any())
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-@endif
+@section('title', 'Connexion enseignant')
 
-<form method="POST" action="{{ route('teacher.login.store') }}">
-    @csrf
+@section('content')
+    <h1>Connexion enseignant</h1>
 
-    <div>
-        <label for="email">E-mail</label><br>
-        <input id="email" name="email" type="email" value="{{ old('email') }}" required autofocus>
-    </div>
+    @if ($errors->any())
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
 
-    <div>
-        <label for="password">Mot de passe</label><br>
-        <input id="password" name="password" type="password" required>
-    </div>
+    <form method="POST" action="{{ route('teacher.login.store') }}">
+        @csrf
 
-    <div>
-        <label>
-            <input type="checkbox" name="remember" value="1">
-            Se souvenir de moi
-        </label>
-    </div>
+        <div>
+            <label for="email">E-mail</label><br>
+            <input id="email" name="email" type="email" value="{{ old('email') }}" required autofocus>
+        </div>
 
-    <button type="submit">Se connecter</button>
-</form>
+        <div>
+            <label for="password">Mot de passe</label><br>
+            <input id="password" name="password" type="password" required>
+        </div>
 
-<hr>
+        <div>
+            <label>
+                <input type="checkbox" name="remember" value="1">
+                Se souvenir de moi
+            </label>
+        </div>
 
-<p>Pas encore de compte ?</p>
-<p><a href="{{ route('teacher.register') }}">Créer un compte</a></p>
+        <button type="submit">Se connecter</button>
+    </form>
 
-</body>
-</html>
+    <hr>
+
+    <p>Pas encore de compte ?</p>
+    <p><a href="{{ route('teacher.register') }}">Créer un compte</a></p>
+@endsection

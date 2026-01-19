@@ -1,4 +1,4 @@
-@extends('base')
+@extends('layout')
 
 @section('title', 'Accueil Jeux Logico-mathématiques')
 
@@ -13,7 +13,7 @@
             <input type="text" name="class_code">
             <!-- Affichage d'erreur -->
             @error("class_code")
-                {{ $message }}
+            {{ $message }}
             @enderror
         </div>
         <button>Valider</button>
