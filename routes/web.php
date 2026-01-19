@@ -21,6 +21,6 @@ Route::prefix('/homepage')->name('homepage.')->controller(HomepageController::cl
     //Page création de compte
     Route::get('/new','newAccount')->name('newAccount');
     //Page liste d'élève de la classe, a modifier !
-    Route::get('/classes','classes')->name('classes');
-    //Route::get('/classes/{nomclasse}','classes')->name('classes');
+    //Route::get('/classes','classes')->name('classes');
+    Route::get('/classes/{name}','classes')->name('classes');
 });
