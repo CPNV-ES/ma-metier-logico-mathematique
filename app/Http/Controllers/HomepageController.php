@@ -29,8 +29,8 @@ class HomepageController extends Controller
         /* */
     }
 
-    //jsp encore mais c'est pour les classes
-    public function jsp(Request $request){
+    //redirige vers une classe en fonction du code
+    public function resolveClassByCode(Request $request){
         $class_code = $request->class_code;
         $SchoolClass = \App\Models\SchoolClass::query()
             ->where('class_code',$class_code)

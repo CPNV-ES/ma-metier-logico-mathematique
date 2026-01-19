@@ -15,7 +15,7 @@ Route::prefix('/homepage')->name('homepage.')->controller(HomepageController::cl
     //Page d'accueil
     Route::get('/','homepage')->name('homepage');
     //pour le formulaire, travail en cours
-    Route::post('/','jsp');
+    Route::post('/','resolveClassByCode');
     //Page de login
     Route::get('/login','login')->name('login');
     //Page création de compte
