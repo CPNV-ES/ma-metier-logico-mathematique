@@ -37,7 +37,11 @@ class SchoolClassController extends Controller
      */
     public function show(SchoolClass $schoolClass)
     {
-        $students = Student::all();
+        //récupère la valeur de l'id de la classe ouverte
+        $id = $schoolClass->id;
+        //cherche les élèves présents dans cette classe
+        $students = Student::where('school_class_id', $id)->get();
+        //appelle la vue et transmet les données des élèves à la vue
         return view('schoolclass.show', compact('students'));
     }
 
