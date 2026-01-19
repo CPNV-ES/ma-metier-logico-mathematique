@@ -13,7 +13,7 @@
     <p>{{ session('success') }}</p>
 @endif
 
-<p><a href="{{ route('teachers.create') }}">Create teacher</a></p>
+<p><a href="{{ route('teacher.create') }}">Create teacher</a></p>
 
 <table border="1" cellpadding="6">
     <thead>
@@ -35,11 +35,11 @@
             <td>{{ $teacher->email }}</td>
             <td>{{ $teacher->created_at }}</td>
             <td>
-                <a href="{{ route('teachers.show', $teacher) }}">Show</a>
+                <a href="{{ route('teacher.show', $teacher) }}">Show</a>
                 |
-                <a href="{{ route('teachers.edit', $teacher) }}">Edit</a>
+                <a href="{{ route('teacher.edit', $teacher) }}">Edit</a>
                 |
-                <form action="{{ route('teachers.destroy', $teacher) }}" method="POST">
+                <form action="{{ route('teacher.destroy', $teacher) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Delete</button>
