@@ -31,11 +31,10 @@ class HomepageController extends Controller
 
     //jsp encore mais c'est pour les classes
     public function jsp(Request $request){
-        //debug pour afficher ce que la personne à entrer
-        //dd($request->all());
-        //Avec la BD
-        $class_code = $request;
-        $SchoolClass = \App\Models\SchoolClass::findOrFail($class_code);
-        return redirect()->route('homepage.classes', 'name'->$SchoolClass->name);
+        $class_code = $request->class_code;
+        $SchoolClass = \App\Models\SchoolClass::query()
+            ->where('class_code',$class_code)
+            ->first();
+        return redirect()->route('homepage.classes', ['name'=>$SchoolClass->name]);
     }
 }
