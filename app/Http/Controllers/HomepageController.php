@@ -30,10 +30,11 @@ class HomepageController extends Controller
     }
 
     //jsp encore mais c'est pour les classes
-    public function jsp(Request $request, SchoolClass $SchoolClass){
+    public function jsp(Request $request){
         //debug pour afficher ce que la personne à entrer
-        dd($request->all());
+        //dd($request->all());
         //Avec la BD
+        $class_code = $request;
         $SchoolClass = \App\Models\SchoolClass::findOrFail($class_code);
         return redirect()->route('homepage.classes', 'name'->$SchoolClass->name);
     }
