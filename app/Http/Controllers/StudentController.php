@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Student;
+use App\Models\GameCategory;
 
 use Illuminate\Http\Request;
 
@@ -11,6 +12,7 @@ class StudentController extends Controller
     {
         $id=$student->id;
         $name=$student->first_name;
-        return view('student.index', compact('id', 'name'));
+        $categories=GameCategory::all();
+        return view('student.index', compact('id', 'name', 'categories'));
     }
 }

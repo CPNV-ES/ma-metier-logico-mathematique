@@ -7,7 +7,7 @@
     <h1>{{$name}}</h1>
     <button onclick="window.history.back()">Retour</button>
     <!-- Affiche toutes les catégories - A implémenter plus tard -->
-     {{--
+     
     @foreach($categories as $category)
         <div>
             <button>
@@ -15,5 +15,5 @@
             </button>
         </div>
     @endforeach
-        --}}
+        
 @endsection
