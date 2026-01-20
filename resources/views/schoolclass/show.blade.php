@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Classe NAME')
+@section('title', $className)
 
 @section('content')
     <!-- Nom de la classe -->
