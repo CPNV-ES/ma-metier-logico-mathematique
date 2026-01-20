@@ -1,19 +1,18 @@
 @extends('layout')
 
-@section('title', 'student name') <!-- 'student name' à remplacer par qqch du genre $studentName quand on pourra return ça depuis la base -->
+@section('title', $name)
 
 @section('content')
     <!-- Nom de l'élève -->
-    <h1>student name</h1>
+    <h1>{{$name}}</h1>
     <button onclick="window.history.back()">Retour</button>
-    <!-- Affiche toutes les catégories -->
-    <!-- A implémenter plus tard -->
+    <!-- Affiche toutes les catégories - A implémenter plus tard -->
      {{--
     @foreach($categories as $category)
         <div>
-            <a href="#">
+            <button>
                 {{ $category->name }}
-            </a>
+            </button>
         </div>
     @endforeach
         --}}
