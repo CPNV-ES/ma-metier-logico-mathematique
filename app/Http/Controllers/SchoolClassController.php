@@ -46,6 +46,13 @@ class SchoolClassController extends Controller
         return view('schoolclass.show', compact('students','className'));
     }
 
+    public function resolveStudentpage($id){
+        $student = Student::where('id', $id)->first();
+        return redirect()->route('homepage.students.show', [
+            'student' => $student->id,
+        ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

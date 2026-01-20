@@ -19,7 +19,13 @@ Route::prefix('homepage')
         Route::resource('classes', SchoolClassController::class)
             ->only(['show'])
             ->parameters(['classes' => 'schoolClass']);
+        
+        Route::resource('students', StudentController::class)
+            ->only(['show'])
+            ->parameters(['students' => 'student']);
     });
+
+Route::get('/homepage/{id}', [SchoolClassController::class, 'resolveStudentpage'])->name('find');
 
 Route::prefix('teacher')->name('teacher.')->group(function () {
     Route::middleware('guest:teacher')->group(function () {

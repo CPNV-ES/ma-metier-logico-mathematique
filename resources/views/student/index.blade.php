@@ -7,7 +7,8 @@
     <h1>student name</h1>
     <button onclick="window.history.back()">Retour</button>
     <!-- Affiche toutes les catégories -->
-    <!-- A implémenter plus tard
+    <!-- A implémenter plus tard -->
+     {{--
     @foreach($categories as $category)
         <div>
             <a href="#">
@@ -15,5 +16,5 @@
             </a>
         </div>
     @endforeach
-    -->
+        --}}
 @endsection
