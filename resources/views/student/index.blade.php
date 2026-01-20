@@ -6,11 +6,11 @@
     <!-- Nom de l'élève -->
     <h1>{{$name}}</h1>
     <button onclick="window.history.back()">Retour</button>
-    <!-- Affiche toutes les catégories - A implémenter plus tard -->
+    <!-- Affiche toutes les catégories -->
      
     @foreach($categories as $category)
         <div>
-            <button>
+            <button onclick="window.location='{{route('findcategory',['id'=>$category->id])}}'">
                 {{ $category->name }}
             </button>
         </div>

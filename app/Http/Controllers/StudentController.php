@@ -15,4 +15,11 @@ class StudentController extends Controller
         $categories=GameCategory::all();
         return view('student.index', compact('id', 'name', 'categories'));
     }
+
+    public function resolveCategorypage($id){
+        $category = GameCategory::where('id', $id)->first();
+        return redirect()->route('homepage.categories.show', [
+            'category' => $category->id,
+        ]);
+    }
 }

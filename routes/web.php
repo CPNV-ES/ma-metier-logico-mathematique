@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\TeacherRegisteredUserController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\SchoolClassController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +24,14 @@ Route::prefix('homepage')
         Route::resource('students', StudentController::class)
             ->only(['show'])
             ->parameters(['students' => 'student']);
+        
+        Route::resource('categories', CategoryController::class)
+            ->only(['show'])
+            ->parameters(['categories' => 'category']);
     });
 
-Route::get('/homepage/{id}', [SchoolClassController::class, 'resolveStudentpage'])->name('find');
+Route::get('/homepage/{id}', [SchoolClassController::class, 'resolveStudentpage'])->name('findstudent');
+Route::get('/homepage/category/{id}', [StudentController::class, 'resolveCategorypage'])->name('findcategory');
 
 Route::prefix('teacher')->name('teacher.')->group(function () {
     Route::middleware('guest:teacher')->group(function () {
