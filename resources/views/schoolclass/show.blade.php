@@ -9,10 +9,10 @@
     <!-- Affiche tous les élèves -->
     @foreach($students as $student)
         <div>
-            <a href="#">
+            <button>
                 <!-- A tester avec les images <img src="{{ $student->medium_id }}" alt="animal"> -->
                 <p>{{ $student->first_name }} {{ $student->last_name }}</p>
-            </a>
+            </button>
         </div>
     @endforeach
 @endsection
