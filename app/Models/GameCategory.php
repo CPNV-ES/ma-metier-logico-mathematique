@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class GameCategory extends Model
 {
+    use HasFactory;
     /**
      * @var list<string>
      */

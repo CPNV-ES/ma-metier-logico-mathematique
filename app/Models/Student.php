@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+    use HasFactory;
     /**
      * @var list<string>
      */
@@ -26,6 +27,11 @@ class Student extends Model
         return $this->belongsToMany(Exercice::class, 'exercise_student', 'student_id', 'exercise_id')
             ->withPivot(['attempt', 'completed'])
             ->withTimestamps();
+    }
+
+    public function media(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'medium_id'); // FK par défaut: media_id
     }
 
     /**

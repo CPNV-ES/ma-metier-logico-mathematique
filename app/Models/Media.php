@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Media extends Model
 {
+    use HasFactory;
+
+    // IMPORTANT: ta table s'appelle "media" (singulier)
     protected $table = 'media';
 
-    /**
-     * @var list<string>
-     */
     protected $fillable = [
         'path',
         'specification_id',

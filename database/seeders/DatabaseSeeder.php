@@ -21,8 +21,16 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
+            SpecificationSeeder::class,
+            MediumTypeSeeder::class,
+            MediaSeeder::class,
             TeacherSeeder::class,
             SchoolClassSeeder::class,
+            GameCategorySeeder::class,
+            GameTypeSeeder::class,
+            LevelSeeder::class,
+            ExerciceSeeder::class,
+            StudentSeeder::class,
         ]);
     }
 }
