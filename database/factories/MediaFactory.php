@@ -27,8 +27,16 @@ class MediaFactory extends Factory
             throw new \RuntimeException("Aucun medium_type trouvé. Lance MediumTypeSeeder avant MediaSeeder.");
         }
 
+        // Liste fixe de 3 paths (à compléter à la main)
+        $paths = [
+            '/img/chat.jpg',
+            '/img/chien.webp',
+            '/img/cochon.webp',
+        ];
+
         return [
-            'path' => 'media/' . $this->faker->uuid() . '.jpg',
+            // Prend une des 3 images au hasard
+            'path' => $this->faker->randomElement($paths),
             'specification_id' => $specificationId,
             'medium_type_id' => $mediumTypeId,
         ];
