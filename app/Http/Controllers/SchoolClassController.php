@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SchoolClass;
 use Illuminate\Http\Request;
+use App\Models\Student;
 
 class SchoolClassController extends Controller
 {
@@ -36,7 +37,20 @@ class SchoolClassController extends Controller
      */
     public function show(SchoolClass $schoolClass)
     {
-        return "Listes des élèves";
+        //récupère la valeur de l'id de la classe ouverte
+        $id = $schoolClass->id;
+        $className = $schoolClass->name;
+        //cherche les élèves présents dans cette classe
+        $students = Student::where('school_class_id', $id)->get();
+        //appelle la vue et transmet les données des élèves à la vue
+        return view('schoolclass.show', compact('students','className'));
+    }
+
+    public function resolveStudentpage($id){
+        $student = Student::where('id', $id)->first();
+        return redirect()->route('homepage.students.show', [
+            'student' => $student->id,
+        ]);
     }
 
     /**
