@@ -11,9 +11,9 @@ class GameTypeSeeder extends Seeder
     public function run(): void
     {
         // Récupère les IDs existants par nom (et échoue si une catégorie manque)
-        $additionId = GameCategory::query()->where('name', 'Addition')->value('id');
-        $soustractionId = GameCategory::query()->where('name', 'Soustraction')->value('id');
-        $multiplicationId = GameCategory::query()->where('name', 'Multiplication')->value('id');
+        $additionId = GameCategory::query()->where('name', 'Classification')->value('id');
+        $soustractionId = GameCategory::query()->where('name', 'Sériation')->value('id');
+        $multiplicationId = GameCategory::query()->where('name', 'Conservation')->value('id');
 
         if (!$additionId || !$soustractionId || !$multiplicationId) {
             throw new \RuntimeException("Catégories manquantes: exécute GameCategorySeeder avant GameTypeSeeder.");
