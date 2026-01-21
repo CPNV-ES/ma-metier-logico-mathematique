@@ -28,11 +28,6 @@ class Exercice extends Model
             ->withTimestamps();
     }
 
-    public function media(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(Media::class, 'medium_id'); // FK par défaut: media_id
-    }
-
     /**
      * @return array<string, array<int, string>>
      */

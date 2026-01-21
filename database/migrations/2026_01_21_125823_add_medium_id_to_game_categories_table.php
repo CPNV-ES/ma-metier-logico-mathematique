@@ -8,10 +8,10 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('exercices', function (Blueprint $table) {
+        Schema::table('game_categories', function (Blueprint $table) {
             $table->foreignId('medium_id')
                 ->nullable()
-                ->after('level_id')
+                ->after('name')
                 ->constrained('media')
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
@@ -20,7 +20,7 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::table('exercices', function (Blueprint $table) {
+        Schema::table('game_categories', function (Blueprint $table) {
             $table->dropConstrainedForeignId('medium_id');
         });
     }

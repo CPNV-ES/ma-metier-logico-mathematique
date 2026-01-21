@@ -27,7 +27,6 @@ class ExerciceSeeder extends Seeder
             for ($i = 1; $i <= 5; $i++) {
                 $rows[] = [
                     'level_id' => $levelId,
-                    'medium_id' => $mediaIds->random(),
                     'created_at' => now(),
                     'updated_at' => now(),
                 ];
