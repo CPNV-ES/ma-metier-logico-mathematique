@@ -26,6 +26,11 @@ class DatabaseSeeder extends Seeder
             GameCategorySeeder::class,
             GameTypeSeeder::class,
             LevelSeeder::class,
+            ExerciceSeeder::class,
+            StudentSeeder::class,
+            SpecificationSeeder::class,
+            MediumTypeSeeder::class,
+            MediaSeeder::class,
         ]);
     }
 }
