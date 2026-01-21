@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             TeacherSeeder::class,
             SchoolClassSeeder::class,
             GameCategorySeeder::class,
+            GameTypeSeeder::class,
         ]);
     }
 }
