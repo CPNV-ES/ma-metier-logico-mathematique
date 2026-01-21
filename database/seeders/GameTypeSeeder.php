@@ -20,14 +20,14 @@ class GameTypeSeeder extends Seeder
         }
 
         $types = [
-            ['name' => 'Niveau 1', 'game_category_id' => $additionId],
-            ['name' => 'Niveau 2', 'game_category_id' => $additionId],
+            ['name' => 'Tu connais les couleurs ?', 'game_category_id' => $additionId],
+            ['name' => 'Quoi ?', 'game_category_id' => $additionId],
 
-            ['name' => 'Niveau 1', 'game_category_id' => $soustractionId],
-            ['name' => 'Niveau 2', 'game_category_id' => $soustractionId],
+            ['name' => 'Les maths', 'game_category_id' => $soustractionId],
+            ['name' => 'Oh non !', 'game_category_id' => $soustractionId],
 
-            ['name' => 'Niveau 1', 'game_category_id' => $multiplicationId],
-            ['name' => 'Niveau 2', 'game_category_id' => $multiplicationId],
+            ['name' => 'Vraiment', 'game_category_id' => $multiplicationId],
+            ['name' => 'Sérieux', 'game_category_id' => $multiplicationId],
         ];
 
         // Évite les doublons si tu relances le seeder
