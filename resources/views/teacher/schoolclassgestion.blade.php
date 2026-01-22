@@ -8,7 +8,6 @@
 <h1>Gestion des classes</h1>
 <form method="POST" action="{{route('teacher.schoolclass_gestion_filtrer')}}">
     @csrf
-    <div>
         <!-- Filtre -->
         <label for="schoolClasses">Filtrer par :</label>
         <select name="schoolClasses" id="schoolClasses">
@@ -17,13 +16,15 @@
             <option value="Personnal" {{ ($filter) == 'Personnal' ? 'selected' : '' }}>Mes classes</option>
         </select>
         <button type="submit">Filtrer</button>
-    </div>
-    <div>
+</form>
+<form method="POST" action="">
+    @csrf
     <!-- Ajout de classe -->
-     <label for="addSchoolClass">Ajouter une classe :</label>
-     <input name="addSchoolClass" type="text">
+     <label for="SchoolClass_name">Nom de la classe :</label>
+     <input name="SchoolClass_name" type="text">
+     <label for="SchoolClass_code">Code de la classe :</label>
+     <input name="SchoolClass_code" type="text">
      <button type="submit">Ajouter</button>
-    </div>
 </form>
 <ul>
     @foreach($schoolClasses as $schoolClass)
