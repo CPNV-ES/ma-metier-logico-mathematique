@@ -10,8 +10,7 @@
             --color-retour_hover: #B74D01;
             --color-border: #2c2c2cff;
             }
-    body {background-color :#FFF4B8;
-          min-width:screen}
+    body {background-color :#FFF4B8;}
     </style>
     <!-- Nom de la classe -->
     <button onclick="window.history.back()" class="m-3 px-7 py-2 bg-retour text-white rounded-xl w-35 hover:bg-retour_hover">Retour</button>
