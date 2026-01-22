@@ -17,7 +17,7 @@
         </select>
         <button type="submit">Filtrer</button>
 </form>
-<form method="POST" action="">
+<form method="POST" action="{{route('teacher.newclass')}}">
     @csrf
     <!-- Ajout de classe -->
      <label for="SchoolClass_name">Nom de la classe :</label>

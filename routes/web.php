@@ -8,6 +8,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\schoolclassgestionController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -57,5 +58,7 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
             ->name('schoolclass_gestion');
         Route::post('/schoolclass_gestion', [DashboardController::class, 'showclasses'])
             ->name('schoolclass_gestion_filtrer');
+        Route::post('/newclass', [schoolclassgestionController::class, 'add'])
+            ->name('newclass');
     });
 });
