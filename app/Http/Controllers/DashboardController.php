@@ -9,14 +9,15 @@ class DashboardController extends Controller
 {
     public function showview()
     {
+        $filter = 'all';
         $schoolClasses = SchoolClass::orderBy('name', 'asc')->get(); //permet un tri par ordre alphabétique
-        return view('teacher.schoolclassgestion', compact('schoolClasses'));
+        return view('teacher.schoolclassgestion', compact('schoolClasses', 'filter'));
     }
 
     public function showclasses(Request $request)
     {
         $filter = $request->schoolClasses; //conserve le filtre pour le transmettre à la vue
-        if($filter=='all'){
+        if($filter == 'all'){
             $schoolClasses = SchoolClass::orderBy('name', 'asc')->get(); //permet un tri par ordre alphabétique
         }
         else
