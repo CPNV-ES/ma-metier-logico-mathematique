@@ -54,5 +54,3 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
             ->name('dashboard'); // teacher.dashboard :contentReference[oaicite:7]{index=7}
     });
 });
-
-Route::redirect('/', '/homepage');
