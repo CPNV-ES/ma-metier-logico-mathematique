@@ -22,7 +22,7 @@ class Level extends Model
 
     public function exercices()
     {
-        return $this->hasMany(Exercice::class);
+        return $this->hasMany(Exercise::class);
     }
 
     /**

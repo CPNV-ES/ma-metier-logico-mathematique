@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Exercice extends Model
+class Exercise extends Model
 {
     protected $table = 'exercices';
 
@@ -14,6 +14,8 @@ class Exercice extends Model
      */
     protected $fillable = [
         'level_id',
+        'content',
+        'answer',
     ];
 
     public function level(): \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -44,5 +46,13 @@ class Exercice extends Model
     public static function updateRules(): array
     {
         return self::createRules();
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'content' => 'array',
+            'answer'  => 'array',
+        ];
     }
 }

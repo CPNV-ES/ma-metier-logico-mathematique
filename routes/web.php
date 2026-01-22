@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\TeacherAuthenticatedSessionController;
 use App\Http\Controllers\Auth\TeacherRegisteredUserController;
+use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\SchoolClassController;
 use App\Http\Controllers\StudentController;
@@ -20,11 +21,11 @@ Route::prefix('homepage')
         Route::resource('classes', SchoolClassController::class)
             ->only(['show'])
             ->parameters(['classes' => 'schoolClass']);
-        
+
         Route::resource('students', StudentController::class)
             ->only(['show'])
             ->parameters(['students' => 'student']);
-        
+
         Route::resource('categories', CategoryController::class)
             ->only(['show'])
             ->parameters(['categories' => 'category']);
@@ -51,6 +52,9 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
             ->name('logout');
 
         Route::view('dashboard', 'teacher.dashboard')
-            ->name('dashboard'); // teacher.dashboard :contentReference[oaicite:7]{index=7}
+            ->name('dashboard');
+
+        Route::resource('exercises', ExerciseController::class)
+            ->only(['create', 'store', 'edit', 'update', 'destroy']);
     });
 });

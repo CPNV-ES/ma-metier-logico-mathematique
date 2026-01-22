@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Exercice;
+use App\Models\Exercise;
 use App\Models\Level;
 use App\Models\Media;
 use Illuminate\Database\Seeder;
 
-class ExerciceSeeder extends Seeder
+class ExerciseSeeder extends Seeder
 {
     public function run(): void
     {
@@ -33,6 +33,6 @@ class ExerciceSeeder extends Seeder
             }
         }
 
-        Exercice::query()->insert($rows);
+        Exercise::query()->insert($rows);
     }
 }

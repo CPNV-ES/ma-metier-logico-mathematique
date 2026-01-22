@@ -30,7 +30,7 @@ class ExerciseStudent extends Pivot
 
     public function exercice(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Exercice::class, 'exercise_id');
+        return $this->belongsTo(Exercise::class, 'exercise_id');
     }
 
     public function student(): \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             GameCategorySeeder::class,
             GameTypeSeeder::class,
             LevelSeeder::class,
-            ExerciceSeeder::class,
+            ExerciseSeeder::class,
             StudentSeeder::class,
         ]);
     }

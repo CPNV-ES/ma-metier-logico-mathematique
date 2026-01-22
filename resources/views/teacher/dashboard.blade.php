@@ -26,7 +26,7 @@
 </p>
 
 <!-- Boutons pour choisir quoi faire -->
-<button>Gestions des classes et des élèves</button>
+<a href="{{ route('teacher.exercises.create') }}">Gestions des classes et des élèves</a>
 <button>Statistiques des élèves</button>
 <button>Gestions des exercices</button>
 {{-- A revoir selon le nom donné au champ

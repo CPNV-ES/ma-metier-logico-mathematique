@@ -24,7 +24,7 @@ class Student extends Model
 
     public function exercices(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Exercice::class, 'exercise_student', 'student_id', 'exercise_id')
+        return $this->belongsToMany(Exercise::class, 'exercise_student', 'student_id', 'exercise_id')
             ->withPivot(['attempt', 'completed'])
             ->withTimestamps();
     }
