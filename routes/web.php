@@ -53,7 +53,9 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
 
         Route::view('dashboard', 'teacher.dashboard')
             ->name('dashboard'); // teacher.dashboard :contentReference[oaicite:7]{index=7}
-        Route::get('/schoolclass_gestion', [DashboardController::class, 'showclasses'])
+        Route::get('/schoolclass_gestion', [DashboardController::class, 'showview'])
             ->name('schoolclass_gestion');
+        Route::post('/schoolclass_gestion', [DashboardController::class, 'showclasses'])
+            ->name('schoolclass_gestion_filtrer');
     });
 });
