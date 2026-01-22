@@ -26,7 +26,7 @@
 </p>
 
 <!-- Boutons pour choisir quoi faire -->
-<button>Gestions des classes et des élèves</button>
+<button onclick="window.location='{{route('teacher.schoolclass_gestion')}}'">Gestions des classes et des élèves</button>
 <button>Statistiques des élèves</button>
 <button>Gestions des exercices</button>
 {{-- A revoir selon le nom donné au champ

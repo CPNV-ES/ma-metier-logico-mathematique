@@ -7,6 +7,7 @@ use App\Http\Controllers\SchoolClassController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -52,5 +53,7 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
 
         Route::view('dashboard', 'teacher.dashboard')
             ->name('dashboard'); // teacher.dashboard :contentReference[oaicite:7]{index=7}
+        Route::get('/schoolclass_gestion', [DashboardController::class, 'showclasses'])
+            ->name('schoolclass_gestion');
     });
 });
