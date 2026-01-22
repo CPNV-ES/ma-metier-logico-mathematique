@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <labels for="password">Mot de passe</label><br>
+                    <label for="password">Mot de passe</label><br>
                     <input class="border-2 border-gray-200 ml-1 mt-1 rounded-md p-1 pl-2 pr-30 w-full" id="password" name="password" type="password" required placeholder="Password">
                 </div>
 
