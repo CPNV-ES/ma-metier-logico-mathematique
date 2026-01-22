@@ -20,7 +20,7 @@
                     @endforeach
                 </ul>
             @endif
-
+            
             <form method="POST" action="{{ route('teacher.login.store') }}">
                 @csrf
 
