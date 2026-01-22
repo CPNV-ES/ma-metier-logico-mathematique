@@ -9,7 +9,7 @@ class DashboardController extends Controller
 {
     public function showclasses()
     {
-        $classes = SchoolClass::get();
-        return view('teacher.schoolclassgestion', compact('classes'));
+        $schoolClasses = SchoolClass::get();
+        return view('teacher.schoolclassgestion', compact('schoolClasses'));
     }
 }
