@@ -11,7 +11,7 @@
 
         <h1 class="text-6xl text-center">Créer un compte</h1>
 
-        <div class="flex flex-col items-center justify-center bg-white border-gray-300 border-1 mt-10 p-5 pb-0 rounded-xl">
+        <div class="flex flex-col items-center justify-center bg-white border-gray-300 border mt-10 p-5 pb-0 rounded-xl">
 
             @if ($errors->any())
                 <ul>
