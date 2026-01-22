@@ -4,7 +4,7 @@
 
 @section('content')
 
-<button onclick="window.history.back()">Retour</button><!-- Modifier car si on filtre plusieurs fois ça fout la merde -->
+<button onclick="window.location='{{route('teacher.dashboard')}}'">Retour</button>
 <h1>Gestion des classes</h1>
 <form method="POST" action="{{route('teacher.schoolclass_gestion_filtrer')}}">
     @csrf
