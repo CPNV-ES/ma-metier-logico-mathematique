@@ -9,7 +9,7 @@ class DashboardController extends Controller
 {
     public function showclasses()
     {
-        $schoolClasses = SchoolClass::get();
+        $schoolClasses = SchoolClass::orderBy('name', 'asc')->get(); //permet un tri par ordre alphabétique
         return view('teacher.schoolclassgestion', compact('schoolClasses'));
     }
 }
