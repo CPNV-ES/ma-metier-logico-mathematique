@@ -8,7 +8,7 @@
     @theme {
             --color-retour: #DB5B00;
             --color-retour_hover: #B74D01;
-            --color-border: #040404;
+            --color-border: #2c2c2cff;
             }
     body {background-color :#FFF4B8;
           min-width:screen}
@@ -18,10 +18,10 @@
     <h1 class="text-center text-5xl min-w-screen mb-8">{{ $className }}</h1>
     <!-- Affiche tous les élèves -->
     <div class="flex flex-wrap justify-center min-w-screen w-full">
-        @foreach($students as $student)
-            <div class="flex content-center justify-center bg-white border border-border rounded-md w-40 h-40 hover:bg-stone-200 mx-8 my-4 align-text-bottom">
+        @foreach($students as $student)  
+                <div class="flex content-center justify-center bg-white border border-border rounded-md w-50 h-45 hover:bg-stone-200 mx-8 my-4 align-text-bottom">
                 <button onclick="window.location='{{ route('findstudent',['id'=>$student->id])}}'">
-                    <img src="{{ $student->media->path }}" alt="" class="w-30">
+                    <img src="{{ $student->media->path }}" alt="" class="w-35">
 
                     <p>{{ $student->first_name }} {{ $student->last_name }}</p>
                 </button>
