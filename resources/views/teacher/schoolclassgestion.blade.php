@@ -10,8 +10,9 @@
     @csrf
     <label for="schoolClasses">Filtrer par :</label>
     <select name="schoolClasses" id="schoolClasses">
-        <option value="all">Toutes les classes</option>
-        <option value="Personnal">Mes classes</option>
+    <!-- Conserve le filtre utilisé en dernier -->
+        <option value="all" {{ old($filter) == 'all' ? 'selected' : '' }}>Toutes les classes</option>
+        <option value="Personnal" {{ ($filter) == 'Personnal' ? 'selected' : '' }}>Mes classes</option>
     </select>
     <button type="submit">Filtrer</button>
 </form>
