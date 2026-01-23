@@ -38,7 +38,7 @@
     <!-- Affiche les classes -->
     <ul>
         @foreach($schoolClasses as $schoolClass)
-            <li><a href="#">{{$schoolClass->name}} {{$schoolClass->class_code}}</a><button>Modifier</button><button>Supprimer</button></li>
+            <li><a href="{{ route('teacher.student_gestion',['id'=>$schoolClass->id])}}">{{$schoolClass->name}} {{$schoolClass->class_code}}</a></li>
         @endforeach
     </ul>
 @endsection
