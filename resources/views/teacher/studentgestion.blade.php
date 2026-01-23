@@ -30,7 +30,7 @@
         </form>
         <button onclick="window.location='{{route('teacher.deleteclass', $schoolClass)}}'">Supprimer</button>
     <h2>Ajouter des élèves</h2>
-    <!-- Ajout de l'élève (à modifier) -->
+    <!-- Ajout de l'élève -->
     <form method="POST" action="{{route('teacher.newstudent', $schoolClass)}}">
         @csrf
         <label for="first_name">Nom de l'élève :</label>
@@ -49,7 +49,7 @@
     <!-- Affiche les élèves (à modifier) -->
     <ul>
         @foreach($students as $student)
-            <li><a href="#">{{$student->first_name}} {{$student->last_name}}</a></li> {{--{{ route('showstudents',['id'=>$student->id])}}--}}
+            <li><a href="{{ route('teacher.student', ['schoolClass'=>$schoolClass, 'student'=>$student])}}">{{$student->first_name}} {{$student->last_name}}</a></li> {{--{{ route('teacher.showstudent',$schoolClass, $student)}}--}}
         @endforeach
     </ul>
 @endsection
