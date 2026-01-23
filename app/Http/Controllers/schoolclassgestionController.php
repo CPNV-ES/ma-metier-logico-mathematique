@@ -23,7 +23,8 @@ class schoolclassgestionController extends Controller
 
     public function showstudents($id)
     {
-        $students = Student::where('school_class_id', $id)->get();
-        return view('teacher.studentgestion', compact('students'));
+        $students = Student::orderBy('first_name', 'asc')->where('school_class_id', $id)->get();
+        $schoolClass = SchoolClass::where('id', $id)->first();
+        return view('teacher.studentgestion', compact('students', 'schoolClass'));
     }
 }

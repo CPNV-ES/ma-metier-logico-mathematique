@@ -6,9 +6,25 @@
 
     <button onclick="window.location='{{route('teacher.schoolclass_gestion')}}'">Retour</button>
     <h1>Gestion des élèves</h1>
+    <h2>Classe {{$schoolClass->name}}</h2>
     <form method="POST" action="{{route('teacher.newclass')}}">
         @csrf
-        <!-- Ajout de l'élève (à modifier) -->
+        <!-- Modif de classe -->
+        <label for="SchoolClass_name">Nom de la classe :</label>
+        <input name="SchoolClass_name" type="text" value="{{ $schoolClass->name }}">
+        @error('SchoolClass_name')
+            <p>{{ $message }}</p>
+        @enderror
+        <label for="SchoolClass_code">Code de la classe :</label>
+        <input name="SchoolClass_code" type="text" value="{{ $schoolClass->class_code }}">
+        @error('SchoolClass_code')
+            <p>{{ $message }}</p>
+        @enderror
+        <button type="submit">Modifier</button>
+    </form>
+    <!-- Ajout de l'élève (à modifier) -->
+    <form method="POST" action="{{route('teacher.newclass')}}">
+        @csrf
         <label for="SchoolClass_name">Nom de l'élève :</label>
         <input name="SchoolClass_name" type="text" value="{{ old('SchoolClass_name') }}">
         @error('SchoolClass_name')
