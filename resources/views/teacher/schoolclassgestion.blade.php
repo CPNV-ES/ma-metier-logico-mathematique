@@ -6,6 +6,7 @@
 
     <button onclick="window.location='{{route('teacher.dashboard')}}'">Retour</button>
     <h1>Gestion des classes</h1>
+    <p>Cliquez sur une classe pour voir les élèves et pouvoir modifier ses informations ou la supprimer.</p>
     <h2>Ajouter une classe</h2>
     <form method="POST" action="{{route('teacher.newclass')}}">
         @csrf

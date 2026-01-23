@@ -11,6 +11,7 @@
     @endif
     <button onclick="window.location='{{route('teacher.schoolclass_gestion')}}'">Retour</button>
     <h1>Gestion des élèves de la classe {{$schoolClass->name}}</h1>
+    <p>Cliquez sur un élève pour pouvoir modifier ses informations ou le supprimer.</p>
     <h2>Modifier les informations de la classe</h2>
         <form method="POST" action="{{route('teacher.updateclass', $schoolClass)}}">
             @csrf
