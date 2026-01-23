@@ -20,6 +20,7 @@ class AddClassRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+    //validation des données de formulaire de classe
     public function rules(): array
     {
         return [
@@ -36,4 +37,18 @@ class AddClassRequest extends FormRequest
         ];
 
     }
+
+    //messages en français
+    public function messages()
+    {
+        return [
+            'SchoolClass_name.required' => 'Le nom de la classe est obligatoire.',
+            'SchoolClass_name.regex'    => 'Le nom ne doit contenir que des lettres, chiffres ou tirets.',
+
+            'SchoolClass_code.required' => 'Le code de la classe est obligatoire.',
+            'SchoolClass_code.digits'   => 'Le code doit contenir exactement 4 chiffres.',
+            'SchoolClass_code.unique'   => 'Ce code est déjà utilisé.',
+        ];
+    }
+
 }
