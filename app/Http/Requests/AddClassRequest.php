@@ -34,7 +34,7 @@ class AddClassRequest extends FormRequest
                 'required',
                 'digits:4',
                 Rule::unique('school_classes', 'class_code')
-                    ->ignore($this->route('schoolClass')->id) //ignore l'unique uniquement si l'id de la classe corresponde à celle qui possède le meme code de classe
+                    ->ignore(optional($this->route('schoolClass'))->id) //ignore l'unique uniquement si l'id de la classe corresponde à celle qui possède le meme code de classe (et si la classe possède un id, comme ça pas de soucis lors de la création)
             ],
         ];
 
