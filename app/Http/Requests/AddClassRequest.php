@@ -12,8 +12,8 @@ class AddClassRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true; //temporaire
-        //return false;
+        //Si l'utilisateur est authentifié en tant que teacher, il a le droit de modifier
+        return auth('teacher')->check();
     }
 
     /**
