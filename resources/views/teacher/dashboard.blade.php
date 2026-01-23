@@ -24,6 +24,7 @@
     @endif
     --}}
 </p>
+<p>N'oubliez pas de vous déconnectez !</p>
 
 <!-- Boutons pour choisir quoi faire -->
 <button onclick="window.location='{{route('teacher.schoolclass_gestion')}}'">Gestions des classes et des élèves</button>
