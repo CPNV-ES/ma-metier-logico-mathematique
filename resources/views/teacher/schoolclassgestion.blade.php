@@ -6,17 +6,7 @@
 
     <button onclick="window.location='{{route('teacher.dashboard')}}'">Retour</button>
     <h1>Gestion des classes</h1>
-    <form method="POST" action="{{route('teacher.schoolclass_gestion_filtrer')}}">
-        @csrf
-            <!-- Filtre -->
-            <label for="schoolClasses">Filtrer par :</label>
-            <select name="schoolClasses" id="schoolClasses">
-            <!-- Conserve le filtre utilisé en dernier -->
-                <option value="all" {{ old($filter) == 'all' ? 'selected' : '' }}>Toutes les classes</option>
-                <option value="Personnal" {{ ($filter) == 'Personnal' ? 'selected' : '' }}>Mes classes</option>
-            </select>
-            <button type="submit">Filtrer</button>
-    </form>
+    <h2>Ajouter une classe</h2>
     <form method="POST" action="{{route('teacher.newclass')}}">
         @csrf
         <!-- Ajout de classe -->
@@ -36,9 +26,21 @@
         {{ session('success') }}
     @endif
     <!-- Affiche les classes -->
+    <h2>Liste des classes</h2>
+    <form method="POST" action="{{route('teacher.schoolclass_gestion_filtrer')}}">
+        @csrf
+            <!-- Filtre -->
+            <label for="schoolClasses">Filtrer par :</label>
+            <select name="schoolClasses" id="schoolClasses">
+            <!-- Conserve le filtre utilisé en dernier -->
+                <option value="all" {{ old($filter) == 'all' ? 'selected' : '' }}>Toutes les classes</option>
+                <option value="Personnal" {{ ($filter) == 'Personnal' ? 'selected' : '' }}>Mes classes</option>
+            </select>
+            <button type="submit">Filtrer</button>
+    </form>
     <ul>
         @foreach($schoolClasses as $schoolClass)
-            <li><a href="{{ route('teacher.student_gestion',['id'=>$schoolClass->id])}}">{{$schoolClass->name}} {{$schoolClass->class_code}}</a></li>
+            <li><a href="{{ route('teacher.student_gestion',['id'=>$schoolClass->id])}}">{{$schoolClass->name}}</a> {{$schoolClass->class_code}}</li>
         @endforeach
     </ul>
 @endsection

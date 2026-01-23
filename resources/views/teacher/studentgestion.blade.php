@@ -5,24 +5,25 @@
 @section('content')
 
     <button onclick="window.location='{{route('teacher.schoolclass_gestion')}}'">Retour</button>
-    <h1>Gestion des élèves</h1>
-    <h2>Classe {{$schoolClass->name}}</h2>
-    <form method="POST" action="{{route('teacher.updateclass', $schoolClass)}}">
-        @csrf
-        <!-- Modif de classe -->
-        <label for="SchoolClass_name">Nom de la classe :</label>
-        <input name="SchoolClass_name" type="text" value="{{ $schoolClass->name }}">
-        @error('SchoolClass_name')
-            <p>{{ $message }}</p>
-        @enderror
-        <label for="SchoolClass_code">Code de la classe :</label>
-        <input name="SchoolClass_code" type="text" value="{{ $schoolClass->class_code }}">
-        @error('SchoolClass_code')
-            <p>{{ $message }}</p>
-        @enderror
-        <button type="submit">Modifier</button>
-    </form>
-    <button onclick="window.location='{{route('teacher.deleteclass', $schoolClass)}}'">Supprimer</button>
+    <h1>Gestion des élèves de la classe {{$schoolClass->name}}</h1>
+    <h2>Modifier les informations de la classe</h2>
+        <form method="POST" action="{{route('teacher.updateclass', $schoolClass)}}">
+            @csrf
+            <!-- Modif de classe -->
+            <label for="SchoolClass_name">Nom de la classe :</label>
+            <input name="SchoolClass_name" type="text" value="{{ $schoolClass->name }}">
+            @error('SchoolClass_name')
+                <p>{{ $message }}</p>
+            @enderror
+            <label for="SchoolClass_code">Code de la classe :</label>
+            <input name="SchoolClass_code" type="text" value="{{ $schoolClass->class_code }}">
+            @error('SchoolClass_code')
+                <p>{{ $message }}</p>
+            @enderror
+            <button type="submit">Modifier</button>
+        </form>
+        <button onclick="window.location='{{route('teacher.deleteclass', $schoolClass)}}'">Supprimer</button>
+    <h2>Ajouter des élèves</h2>
     <!-- Ajout de l'élève (à modifier) -->
     <form method="POST" action="{{route('teacher.newclass')}}">
         @csrf
@@ -41,6 +42,7 @@
     @if(session('success'))
         {{ session('success') }}
     @endif
+    <h2>Liste des élèves</h2>
     <!-- Affiche les élèves (à modifier) -->
     <ul>
         @foreach($students as $student)
