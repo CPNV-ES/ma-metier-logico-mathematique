@@ -30,23 +30,33 @@ class schoolclassgestionController extends Controller
 
     public function update(AddClassRequest $request, SchoolClass $schoolClass)
     {
-        //valide les données
-        $data = $request->validated();
-        //renomme les champs pour correspondre à la base et l'update
-        $schoolClass->update([
-            'name'       => $data['SchoolClass_name'],
-            'class_code' => $data['SchoolClass_code'],
-        ]);
-        
-        return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('success', "La classe a été modifiée.");
+        //Uniquement le prof de la classe est autorisé à la modifier
+        if(auth('teacher')->user()->id == $schoolClass->teacher_id){
+            //valide les données
+            $data = $request->validated();
+            //renomme les champs pour correspondre à la base et l'update
+            $schoolClass->update([
+                'name'       => $data['SchoolClass_name'],
+                'class_code' => $data['SchoolClass_code'],
+            ]);
+            return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('success', "La classe a été modifiée.");
+        }else{
+            return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('error', "Vous n'êtes pas autorisé à modifier cette classe.");
+        }
     }
 
     public function delete(SchoolClass $schoolClass)
     {
         try {
-            $schoolClass->delete();
-            return redirect()->route('teacher.schoolclass_gestion')->with('success', "La classe a été supprimée.");
+            //Uniquement le prof de la classe est autorisé à la supprimer
+            if(auth('teacher')->user()->id == $schoolClass->teacher_id){
+                $schoolClass->delete();
+                return redirect()->route('teacher.schoolclass_gestion')->with('success', "La classe a été supprimée.");
+            }else{
+                return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('error', "Vous n'êtes pas autorisé à supprimer cette classe.");
+            }
         } catch (\Exception $e){
+            //renvoie une erreur si la classe n'est pas vide (sans élève)
             return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('error', "La classe ne peut pas être supprimée, elle contient encore des élèves.");
         }
     }
