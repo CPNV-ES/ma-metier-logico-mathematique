@@ -22,6 +22,7 @@
         @enderror
         <button type="submit">Modifier</button>
     </form>
+    <button onclick="window.location='{{route('teacher.deleteclass', $schoolClass)}}'">Supprimer</button>
     <!-- Ajout de l'élève (à modifier) -->
     <form method="POST" action="{{route('teacher.newclass')}}">
         @csrf

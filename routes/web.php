@@ -64,5 +64,7 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
             ->name('student_gestion');
         Route::post('/updateclass/{schoolClass}', [schoolclassgestionController::class, 'update'])
             ->name('updateclass');
+        Route::get('/deleteclass/{schoolClass}', [schoolclassgestionController::class, 'delete'])
+            ->name('deleteclass');
     });
 });

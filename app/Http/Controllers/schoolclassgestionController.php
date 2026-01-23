@@ -40,4 +40,10 @@ class schoolclassgestionController extends Controller
         
         return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('success', "La classe a été modifiée.");
     }
+
+    public function delete(SchoolClass $schoolClass)
+    {
+        $schoolClass->delete();
+        return redirect()->route('teacher.schoolclass_gestion')->with('success', "La classe a été supprimée.");
+    }
 }
