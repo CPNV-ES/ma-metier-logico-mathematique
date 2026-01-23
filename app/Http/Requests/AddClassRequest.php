@@ -27,7 +27,7 @@ class AddClassRequest extends FormRequest
         return [
             'SchoolClass_name' => [
                 'required',
-                'regex:/^[a-zA-Z0-9\-]+$/'
+                'regex:/^[a-zA-Z0-9\-\s]+$/'
             ],
 
             'SchoolClass_code' => [
@@ -45,7 +45,7 @@ class AddClassRequest extends FormRequest
     {
         return [
             'SchoolClass_name.required' => 'Le nom de la classe est obligatoire.',
-            'SchoolClass_name.regex'    => 'Le nom ne doit contenir que des lettres, chiffres ou tirets.',
+            'SchoolClass_name.regex'    => 'Le nom ne doit contenir que des lettres, chiffres, espaces ou tirets.',
 
             'SchoolClass_code.required' => 'Le code de la classe est obligatoire.',
             'SchoolClass_code.digits'   => 'Le code doit contenir exactement 4 chiffres.',

@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\SchoolClass;
 use App\Models\Student;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use App\Http\Requests\AddClassRequest;
 
 class schoolclassgestionController extends Controller

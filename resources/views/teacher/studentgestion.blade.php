@@ -31,16 +31,16 @@
         <button onclick="window.location='{{route('teacher.deleteclass', $schoolClass)}}'">Supprimer</button>
     <h2>Ajouter des élèves</h2>
     <!-- Ajout de l'élève (à modifier) -->
-    <form method="POST" action="{{route('teacher.newclass')}}">
+    <form method="POST" action="{{route('teacher.newstudent', $schoolClass)}}">
         @csrf
-        <label for="SchoolClass_name">Nom de l'élève :</label>
-        <input name="SchoolClass_name" type="text" value="{{ old('SchoolClass_name') }}">
-        @error('SchoolClass_name')
+        <label for="first_name">Nom de l'élève :</label>
+        <input name="first_name" type="text" value="{{ old('first_name') }}">
+        @error('first_name')
             <p>{{ $message }}</p>
         @enderror
-        <label for="SchoolClass_code">Prénom de l'élève :</label>
-        <input name="SchoolClass_code" type="text">
-        @error('SchoolClass_code')
+        <label for="last_name">Prénom de l'élève :</label>
+        <input name="last_name" type="text" value="{{ old('last_name') }}">
+        @error('last_name')
             <p>{{ $message }}</p>
         @enderror
         <button type="submit">Ajouter</button>

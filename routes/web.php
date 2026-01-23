@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\schoolclassgestionController;
+use App\Http\Controllers\studentgestionController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -66,5 +67,7 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
             ->name('updateclass');
         Route::get('/deleteclass/{schoolClass}', [schoolclassgestionController::class, 'delete'])
             ->name('deleteclass');
+        Route::post('/newstudent/{schoolClass}', [studentgestionController::class, 'addstudent'])
+            ->name('newstudent');
     });
 });
