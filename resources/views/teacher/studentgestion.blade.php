@@ -4,6 +4,11 @@
 
 @section('content')
 
+    @if(session('success'))
+        {{ session('success') }}
+    @elseif(session('error'))
+        {{ session('error') }}
+    @endif
     <button onclick="window.location='{{route('teacher.schoolclass_gestion')}}'">Retour</button>
     <h1>Gestion des élèves de la classe {{$schoolClass->name}}</h1>
     <h2>Modifier les informations de la classe</h2>
@@ -39,9 +44,6 @@
         @enderror
         <button type="submit">Ajouter</button>
     </form>
-    @if(session('success'))
-        {{ session('success') }}
-    @endif
     <h2>Liste des élèves</h2>
     <!-- Affiche les élèves (à modifier) -->
     <ul>

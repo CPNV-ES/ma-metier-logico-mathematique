@@ -43,7 +43,11 @@ class schoolclassgestionController extends Controller
 
     public function delete(SchoolClass $schoolClass)
     {
-        $schoolClass->delete();
-        return redirect()->route('teacher.schoolclass_gestion')->with('success', "La classe a été supprimée.");
+        try {
+            $schoolClass->delete();
+            return redirect()->route('teacher.schoolclass_gestion')->with('success', "La classe a été supprimée.");
+        } catch (\Exception $e){
+            return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('error', "La classe ne peut pas être supprimée, elle contient encore des élèves.");
+        }
     }
 }
