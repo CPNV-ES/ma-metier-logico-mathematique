@@ -62,5 +62,7 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
             ->name('newclass');
         Route::get('/student_gestion/{id}', [schoolclassgestionController::class, 'showstudents'])
             ->name('student_gestion');
+        Route::post('/updateclass/{schoolClass}', [schoolclassgestionController::class, 'update'])
+            ->name('updateclass');
     });
 });

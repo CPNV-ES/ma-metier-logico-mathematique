@@ -7,7 +7,7 @@
     <button onclick="window.location='{{route('teacher.schoolclass_gestion')}}'">Retour</button>
     <h1>Gestion des élèves</h1>
     <h2>Classe {{$schoolClass->name}}</h2>
-    <form method="POST" action="{{route('teacher.newclass')}}">
+    <form method="POST" action="{{route('teacher.updateclass', $schoolClass)}}">
         @csrf
         <!-- Modif de classe -->
         <label for="SchoolClass_name">Nom de la classe :</label>

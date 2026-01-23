@@ -27,4 +27,17 @@ class schoolclassgestionController extends Controller
         $schoolClass = SchoolClass::where('id', $id)->first();
         return view('teacher.studentgestion', compact('students', 'schoolClass'));
     }
+
+    public function update(AddClassRequest $request, SchoolClass $schoolClass)
+    {
+        //valide les données
+        $data = $request->validated();
+        //renomme les champs pour correspondre à la base et l'update
+        $schoolClass->update([
+            'name'       => $data['SchoolClass_name'],
+            'class_code' => $data['SchoolClass_code'],
+        ]);
+        
+        return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('success', "La classe a été modifiée.");
+    }
 }

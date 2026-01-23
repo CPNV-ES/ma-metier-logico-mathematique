@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class AddClassRequest extends FormRequest
 {
@@ -32,7 +33,8 @@ class AddClassRequest extends FormRequest
             'SchoolClass_code' => [
                 'required',
                 'digits:4',
-                'unique:school_classes,class_code'
+                Rule::unique('school_classes', 'class_code')
+                    ->ignore($this->route('schoolClass')->id) //ignore l'unique uniquement si l'id de la classe corresponde à celle qui possède le meme code de classe
             ],
         ];
 
