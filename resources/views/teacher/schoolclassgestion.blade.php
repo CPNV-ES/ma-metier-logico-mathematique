@@ -20,11 +20,17 @@
 <form method="POST" action="{{route('teacher.newclass')}}">
     @csrf
     <!-- Ajout de classe -->
-     <label for="SchoolClass_name">Nom de la classe :</label>
-     <input name="SchoolClass_name" type="text">
-     <label for="SchoolClass_code">Code de la classe :</label>
-     <input name="SchoolClass_code" type="text">
-     <button type="submit">Ajouter</button>
+    <label for="SchoolClass_name">Nom de la classe :</label>
+    <input name="SchoolClass_name" type="text">
+    @error('SchoolClass_name')
+        <p>{{ $message }}</p>
+    @enderror
+    <label for="SchoolClass_code">Code de la classe :</label>
+    <input name="SchoolClass_code" type="text">
+    @error('SchoolClass_code')
+        <p>{{ $message }}</p>
+    @enderror
+    <button type="submit">Ajouter</button>
 </form>
 <ul>
     @foreach($schoolClasses as $schoolClass)

@@ -14,7 +14,8 @@ class schoolclassgestionController extends Controller
     {
         $schoolClass = SchoolClass::create([
             'name'=>$request->input('SchoolClass_name'),
-            'class_code'=>$request->input('SchoolClass_code')
+            'class_code'=>$request->input('SchoolClass_code'),
+            'teacher_id'=>auth('teacher')->user()->id
         ]);
         return redirect()->route('teacher.schoolclass_gestion')->with('success', "La classe a été créée.");
     }

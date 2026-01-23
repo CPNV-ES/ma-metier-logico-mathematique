@@ -23,8 +23,17 @@ class AddClassRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'SchoolClass_name'=>['required', 'regex:/^[a-z0-9\-]+$/'],
-            'SchoolClass_code'=>['required', 'numeric', 'min:4', 'max:4', 'unique:SchoolClass', 'regex:/^[0-9]+$/']
+            'SchoolClass_name' => [
+                'required',
+                'regex:/^[a-zA-Z0-9\-]+$/'
+            ],
+
+            'SchoolClass_code' => [
+                'required',
+                'digits:4',
+                'unique:school_classes,class_code'
+            ],
         ];
+
     }
 }
