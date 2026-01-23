@@ -12,16 +12,16 @@
     <button onclick="window.location='{{route('teacher.student_gestion', $schoolClass->id)}}'">Retour</button>
     <h1>{{$student_selected->first_name}} {{$student_selected->last_name}}</h1>
     <h2>Modifier les informations de l'élève</h2>
-        <form method="POST" action="{{route('teacher.updateclass', $schoolClass)}}">
+        <form method="POST" action="{{route('teacher.updatestudent', [$schoolClass, $student_selected])}}">
             @csrf
             <!-- Modif de classe -->
-            <label for="SchoolClass_name">Nom de la classe :</label>
-            <input name="SchoolClass_name" type="text" value="{{ $schoolClass->name }}">
+            <label for="first_name">Prénom de l'élève :</label>
+            <input name="first_name" type="text" value="{{ $student_selected->first_name }}">
             @error('SchoolClass_name')
                 <p>{{ $message }}</p>
             @enderror
-            <label for="SchoolClass_code">Code de la classe :</label>
-            <input name="SchoolClass_code" type="text" value="{{ $schoolClass->class_code }}">
+            <label for="last_name">Nom de l'élève :</label>
+            <input name="last_name" type="text" value="{{ $student_selected->last_name }}">
             @error('SchoolClass_code')
                 <p>{{ $message }}</p>
             @enderror

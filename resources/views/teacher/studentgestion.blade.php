@@ -33,12 +33,12 @@
     <!-- Ajout de l'élève -->
     <form method="POST" action="{{route('teacher.newstudent', $schoolClass)}}">
         @csrf
-        <label for="first_name">Nom de l'élève :</label>
+        <label for="first_name">Prénom de l'élève :</label>
         <input name="first_name" type="text" value="{{ old('first_name') }}">
         @error('first_name')
             <p>{{ $message }}</p>
         @enderror
-        <label for="last_name">Prénom de l'élève :</label>
+        <label for="last_name">Nom de l'élève :</label>
         <input name="last_name" type="text" value="{{ old('last_name') }}">
         @error('last_name')
             <p>{{ $message }}</p>

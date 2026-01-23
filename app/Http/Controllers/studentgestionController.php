@@ -28,12 +28,12 @@ class studentgestionController extends Controller
 
     public function deletestudent(SchoolClass $schoolClass, Student $student)
     {
-            //Uniquement le prof de la classe est autorisé à la supprimer
+            //Uniquement le prof de la classe est autorisé à le supprimer
             if(auth('teacher')->user()->id == $schoolClass->teacher_id){
                 $student->delete();
                 return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('success', "L'élève a été supprimée.");
             }else{
-                return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('error', "Vous n'êtes pas autorisé à supprimer cette classe.");
+                return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('error', "Vous n'êtes pas autorisé à supprimer des élèves dans cette classe.");
             }
     }
 
@@ -41,5 +41,23 @@ class studentgestionController extends Controller
     {
         $student_selected = Student::where('school_class_id', $schoolClass->id)->where('id', $student->id)->first();
         return view('teacher.student', compact('student_selected', 'schoolClass'));
+    }
+
+    public function updatestudent(AddStudentRequest $request, SchoolClass $schoolClass, Student $student)
+    {
+        //Uniquement le prof de la classe est autorisé à la modifier
+        if(auth('teacher')->user()->id == $schoolClass->teacher_id){
+            //valide les données
+            $data = $request->validated();
+            //renomme les champs pour correspondre à la base et l'update
+            $student->update([
+                'first_name' => $data['first_name'],
+                'last_name' => $data['last_name'],
+                'school_class_id'=>$schoolClass->id
+            ]);
+            return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('success', "L'élève a été modifiée.");
+        }else{
+            return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('error', "Vous n'êtes pas autorisé à modifier les élèves dans cette classe.");
+        }
     }
 }
