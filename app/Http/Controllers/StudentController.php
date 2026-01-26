@@ -44,6 +44,9 @@ class StudentController extends Controller
     public function update(AddStudentRequest $request, SchoolClass $schoolClass, Student $student)
     {
         if(auth('teacher')->user()->id == $schoolClass->teacher_id){
+            if ($student->school_class_id !== $schoolClass->id) {
+                return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('error', "Vous n'êtes pas autorisé à modifier cet élève.");
+            }
             //valide les données
             $data = $request->validated();
             //renomme les champs pour correspondre à la base et l'update
@@ -62,6 +65,9 @@ class StudentController extends Controller
     {
         //Uniquement le prof de la classe est autorisé à le supprimer
         if(auth('teacher')->user()->id == $schoolClass->teacher_id){
+            if ($student->school_class_id !== $schoolClass->id) {
+                return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('error', "Vous n'êtes pas autorisé à supprimer cet élève.");
+            }
             $student->delete();
             return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('success', "L'élève a été supprimée.");
         }else{

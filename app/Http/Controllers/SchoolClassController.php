@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddClassRequest;
 use App\Models\SchoolClass;
-use Illuminate\Http\Request;
 use App\Models\Student;
+use Illuminate\Http\Request;
 
 class SchoolClassController extends Controller
 {
@@ -70,7 +71,7 @@ class SchoolClassController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SchoolClass $schoolClass)
+    public function update(AddClassRequest $request, SchoolClass $schoolClass)
     {
         //Uniquement le prof de la classe est autorisé à la modifier
         if(auth('teacher')->user()->id == $schoolClass->teacher_id){
