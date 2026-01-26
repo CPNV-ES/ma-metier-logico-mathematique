@@ -56,17 +56,17 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
 
         Route::view('dashboard', 'teacher.dashboard')
             ->name('dashboard'); // teacher.dashboard :contentReference[oaicite:7]{index=7}
-        Route::get('/schoolclass_gestion', [DashboardController::class, 'showview'])
+        Route::get('/schoolclass_gestion', [TeacherController::class, 'showClasses'])
             ->name('schoolclass_gestion');
-        Route::post('/schoolclass_gestion', [DashboardController::class, 'showclasses'])
+        Route::post('/schoolclass_gestion', [TeacherController::class, 'showClassesFilter'])
             ->name('schoolclass_gestion_filtrer');
-        Route::post('/newclass', [schoolclassgestionController::class, 'add'])
+        Route::post('/newclass', [SchoolClassController::class, 'store'])
             ->name('newclass');
-        Route::get('/student_gestion/{id}', [schoolclassgestionController::class, 'showstudents'])
+        Route::get('/student_gestion/{id}', [SchoolClassController::class, 'showStudents'])
             ->name('student_gestion');
-        Route::post('/updateclass/{schoolClass}', [schoolclassgestionController::class, 'update'])
+        Route::post('/updateclass/{schoolClass}', [SchoolClassController::class, 'update'])
             ->name('updateclass');
-        Route::get('/deleteclass/{schoolClass}', [schoolclassgestionController::class, 'delete'])
+        Route::get('/deleteclass/{schoolClass}', [SchoolClassController::class, 'destroy'])
             ->name('deleteclass');
         Route::post('/newstudent/{schoolClass}', [studentgestionController::class, 'addstudent'])
             ->name('newstudent');
