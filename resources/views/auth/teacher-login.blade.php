@@ -5,7 +5,7 @@
 @section('content')
 <div class="min-h-screen bg-[#FFF4B8] relative">
     <header>
-        <button class="bg-[#DB5B00] m-3 p-3 text-white text-xl rounded-3xl w-40 transition hover:bg-red-800" onclick="window.history.back()">← Retour</button>
+        <button class="bg-[#DB5B00] m-3 p-3 text-white text-xl rounded-3xl w-40 transition hover:bg-red-800" onclick="window.location='{{route('home')}}'">← Retour</button>
     </header>
     <div class="flex flex-col items-center mt-20">
 
