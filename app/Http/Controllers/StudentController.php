@@ -7,13 +7,16 @@ use App\Models\GameCategory;
 use App\Models\Media;
 use App\Models\SchoolClass;
 use App\Models\Student;
+use App\Models\ExerciseStudent;
 
 class StudentController extends Controller
 {
     public function show(SchoolClass $schoolClass, Student $student)
     {
         $student_selected = Student::where('school_class_id', $schoolClass->id)->where('id', $student->id)->first();
-        return view('teacher.student', compact('student_selected', 'schoolClass'));
+        $levels = ExerciseStudent::where('student_id', $student->id)->get();
+        //dd($levels);
+        return view('teacher.student', compact('student_selected', 'schoolClass', 'levels'));
     }
 
     public function resolveCategorypage($id)

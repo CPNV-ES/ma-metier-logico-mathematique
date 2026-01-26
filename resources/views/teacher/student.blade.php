@@ -32,4 +32,24 @@
             @method('DELETE')
             <button type="submit">Supprimer</button>
         </form>
+        @if($levels->isNotEmpty())
+            <table>
+                <tr>
+                    <th>Essais</th>
+                    <th>% de réussite</th>
+                    <th>Statut</th>
+                </tr>
+                @foreach($levels as $level)
+                <tr>
+                <td>{{ $level->attempt }}</td>
+                <td>{{ round((5/$level->attempt)*100, 2) }} %</td>
+                    @if($level->completed == 0)
+                        <td>En cours</td>
+                    @else
+                        <td>Terminé</td>
+                    @endif
+                </tr>
+            @endforeach
+            </table>
+        @endif
 @endsection
