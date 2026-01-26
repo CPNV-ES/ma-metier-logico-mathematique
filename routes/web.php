@@ -12,6 +12,7 @@ use App\Http\Controllers\schoolclassgestionController;
 use App\Http\Controllers\studentgestionController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', [HomepageController::class, 'index'])->name('home');
 
 Route::prefix('homepage')
     ->name('homepage.')
@@ -23,11 +24,11 @@ Route::prefix('homepage')
         Route::resource('classes', SchoolClassController::class)
             ->only(['show'])
             ->parameters(['classes' => 'schoolClass']);
-        
+
         Route::resource('students', StudentController::class)
             ->only(['show'])
             ->parameters(['students' => 'student']);
-        
+
         Route::resource('categories', CategoryController::class)
             ->only(['show'])
             ->parameters(['categories' => 'category']);
@@ -76,4 +77,6 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
         Route::post('/updateclass/{schoolClass}/{student}', [studentgestionController::class, 'updatestudent'])
             ->name('updatestudent');
     });
+
+    Route::get('/', [HomepageController::class, 'index']);
 });
