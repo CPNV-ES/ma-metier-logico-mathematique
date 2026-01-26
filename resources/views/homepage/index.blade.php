@@ -45,7 +45,7 @@
                 Jeux Logico-mathématiques
             </h1>
 
-            <form action="" method="post" class="mt-10 sm:mt-14">
+            <form action="{{route('homepage.resolve')}}" method="post" class="mt-10 sm:mt-14">
                 @csrf
 
                 <div class="flex flex-col items-center justify-center gap-4">
