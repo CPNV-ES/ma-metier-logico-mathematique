@@ -43,7 +43,7 @@
 
     <!-- Boutons pour choisir quoi faire -->
     <div class="flex flex-wrap justify-center min-w-screen w-full">
-        <button class="bg-classe_eleve mx-20 my-10 text-[40px] h-26 w-full text-center rounded-xl hover:bg-classe_eleve_hover">Gestions des classes et des élèves</button>
+        <button class="bg-classe_eleve mx-20 my-10 text-[40px] h-26 w-full text-center rounded-xl hover:bg-classe_eleve_hover" onclick="window.location='{{route('teacher.schoolclass_gestion')}}'">Gestions des classes et des élèves</button>
         <button class="bg-stats mx-20 my-10 text-[40px] h-26 text-center w-full rounded-xl hover:bg-stats_hover">Statistiques des élèves</button>
         <button class="bg-exercices mx-20 my-10 text-[40px] h-26 text-center w-full rounded-xl hover:bg-exercices_hover">Gestions des exercices</button>
         {{-- A revoir selon le nom donné au champ
