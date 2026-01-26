@@ -21,12 +21,11 @@ class studentgestionController extends Controller
                 'school_class_id'=>$schoolClass->id,
                 'medium_id' => $mediumID
             ]);
-            dd($student);
             return redirect()->route('teacher.student_gestion', $schoolClass->id)->with('success', "L'élève a été ajouté.");
         }else{
             return redirect()->route('teacher.student_gestion', $schoolClass->id)->with('error', "Vous n'êtes pas autorisé à ajouter un élève dans cette classe.");
         }
-        
+
     }
 
     public function deletestudent(SchoolClass $schoolClass, Student $student)
