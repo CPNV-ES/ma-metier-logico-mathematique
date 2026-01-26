@@ -54,7 +54,7 @@ class SchoolClassController extends Controller
 
     public function resolveStudentpage($id){
         $student = Student::where('id', $id)->first();
-        return redirect()->route('homepage.students.show', [
+        return redirect()->route('homepage.gameCategories.index', [
             'student' => $student->id,
         ]);
     }

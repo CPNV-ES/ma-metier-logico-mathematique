@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddStudentRequest;
 use App\Models\GameCategory;
+use App\Models\Media;
+use App\Models\SchoolClass;
 use App\Models\Student;
 
 class StudentController extends Controller
 {
-    public function show(Student $student)
+    public function show(SchoolClass $schoolClass, Student $student)
     {
-        $id = $student->id;
-        $name = $student->first_name;
-        $categories = GameCategory::all();
-        return view('student.index', compact('id', 'name', 'categories'));
+        $student_selected = Student::where('school_class_id', $schoolClass->id)->where('id', $student->id)->first();
+        return view('teacher.student', compact('student_selected', 'schoolClass'));
     }
 
     public function resolveCategorypage($id)
@@ -21,5 +22,50 @@ class StudentController extends Controller
         return redirect()->route('homepage.categories.show', [
             'category' => $category->id,
         ]);
+    }
+
+    public function store(AddStudentRequest $request, SchoolClass $schoolClass)
+    {
+        if(auth('teacher')->user()->id == $schoolClass->teacher_id){
+            $mediumID = Media::where('specification_id', 2)->pluck('id')->random(); //récupère les id de l'image aléatoirement ! 2=animal
+            $student = Student::create([
+                'first_name'=>$request->input('first_name'),
+                'last_name'=>$request->input('last_name'),
+                'school_class_id'=>$schoolClass->id,
+                'medium_id' => $mediumID
+            ]);
+            return redirect()->route('teacher.student_gestion', $schoolClass->id)->with('success', "L'élève a été ajouté.");
+        }else{
+            return redirect()->route('teacher.student_gestion', $schoolClass->id)->with('error', "Vous n'êtes pas autorisé à ajouter un élève dans cette classe.");
+        }
+
+    }
+
+    public function update(AddStudentRequest $request, SchoolClass $schoolClass, Student $student)
+    {
+        if(auth('teacher')->user()->id == $schoolClass->teacher_id){
+            //valide les données
+            $data = $request->validated();
+            //renomme les champs pour correspondre à la base et l'update
+            $student->update([
+                'first_name' => $data['first_name'],
+                'last_name' => $data['last_name'],
+                'school_class_id'=>$schoolClass->id
+            ]);
+            return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('success', "L'élève a été modifiée.");
+        }else{
+            return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('error', "Vous n'êtes pas autorisé à modifier les élèves dans cette classe.");
+        }
+    }
+
+    public function destroy(SchoolClass $schoolClass, Student $student)
+    {
+        //Uniquement le prof de la classe est autorisé à le supprimer
+        if(auth('teacher')->user()->id == $schoolClass->teacher_id){
+            $student->delete();
+            return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('success', "L'élève a été supprimée.");
+        }else{
+            return redirect()->route('teacher.student_gestion', ['id'=>$schoolClass->id])->with('error', "Vous n'êtes pas autorisé à supprimer des élèves dans cette classe.");
+        }
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\TeacherAuthenticatedSessionController;
 use App\Http\Controllers\Auth\TeacherRegisteredUserController;
+use App\Http\Controllers\GameCategoryController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\SchoolClassController;
 use App\Http\Controllers\StudentController;
@@ -25,8 +26,8 @@ Route::prefix('homepage')
             ->only(['show'])
             ->parameters(['classes' => 'schoolClass']);
 
-        Route::resource('students', StudentController::class)
-            ->only(['show'])
+        Route::resource('gameCategories', GameCategoryController::class)
+            ->only(['index'])
             ->parameters(['students' => 'student']);
 
         Route::resource('categories', CategoryController::class)
@@ -68,13 +69,13 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
             ->name('updateclass');
         Route::get('/deleteclass/{schoolClass}', [SchoolClassController::class, 'destroy'])
             ->name('deleteclass');
-        Route::post('/newstudent/{schoolClass}', [studentgestionController::class, 'addstudent'])
+        Route::post('/newstudent/{schoolClass}', [StudentController::class, 'store'])
             ->name('newstudent');
-        Route::get('/student/{schoolClass}/{student}', [studentgestionController::class, 'showstudent'])
+        Route::get('/student/{schoolClass}/{student}', [StudentController::class, 'show'])
             ->name('student');
-        Route::get('/deletestudent/{schoolClass}/{student}', [studentgestionController::class, 'deletestudent'])
+        Route::get('/deletestudent/{schoolClass}/{student}', [StudentController::class, 'destroy'])
             ->name('deletestudent');
-        Route::post('/updateclass/{schoolClass}/{student}', [studentgestionController::class, 'updatestudent'])
+        Route::post('/updateclass/{schoolClass}/{student}', [StudentController::class, 'update'])
             ->name('updatestudent');
     });
 
