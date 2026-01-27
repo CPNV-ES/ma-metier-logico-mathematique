@@ -35,14 +35,20 @@
         @if($levels->isNotEmpty())
             <table>
                 <tr>
+                    <th>Catégorie</th>
+                    <th>Type de jeu</th>
+                    <th>Niveau</th>
                     <th>Essais</th>
                     <th>% de réussite</th>
                     <th>Statut</th>
                 </tr>
                 @foreach($levels as $level)
                 <tr>
-                <td>{{ $level->attempt }}</td>
-                <td>{{ round((5/$level->attempt)*100, 2) }} %</td>
+                    <td>{{ $level->exercice?->Level?->GameType?->GameCategory->name }}</td>
+                    <td>{{ $level->exercice?->Level?->GameType->name }}</td>
+                    <td>{{ $level->exercice?->Level->name }}</td>
+                    <td>{{ $level->attempt }}</td>
+                    <td>{{ round((5/$level->attempt)*100, 2) }} %</td>
                     @if($level->completed == 0)
                         <td>En cours</td>
                     @else

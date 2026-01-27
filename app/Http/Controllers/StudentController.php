@@ -14,7 +14,7 @@ class StudentController extends Controller
     public function show(SchoolClass $schoolClass, Student $student)
     {
         $student_selected = Student::where('school_class_id', $schoolClass->id)->where('id', $student->id)->first();
-        $levels = ExerciseStudent::where('student_id', $student->id)->get();
+        $levels = ExerciseStudent::where('student_id', $student->id)->with('Exercice.Level.GameType.GameCategory')->get();
         //dd($levels);
         return view('teacher.student', compact('student_selected', 'schoolClass', 'levels'));
     }
