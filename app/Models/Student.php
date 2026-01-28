@@ -15,6 +15,7 @@ class Student extends Model
         'first_name',
         'last_name',
         'school_class_id',
+        'medium_id'
     ];
 
     public function schoolClass(): \Illuminate\Database\Eloquent\Relations\BelongsTo
