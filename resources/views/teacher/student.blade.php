@@ -48,7 +48,7 @@
                     <td>{{ $level->exercice?->Level?->GameType->name }}</td>
                     <td>{{ $level->exercice?->Level->name }}</td>
                     <td>{{ $level->attempt }}</td>
-                    <td>{{ round((5/$level->attempt)*100, 2) }} %</td>
+                    <td>{{ round((1/$level->attempt)*100, 2) }} %</td>
                     @if($level->completed == 0)
                         <td>En cours</td>
                     @else
