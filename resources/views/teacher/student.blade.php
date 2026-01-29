@@ -61,7 +61,18 @@
                             <td class="w-64 px-10">{{ $level->exercice?->Level?->GameType->name }}</td>
                             <td class="w-24 px-4">{{ $level->exercice?->Level->name }}</td>
                             <td class="w-20 px-10">{{ $level->attempt }}</td>
-                            <td class="w-31 px-10">{{ round((1/$level->attempt)*100, 2) }} %</td>
+                            @php
+                                $percent = round((1 / $level->attempt) * 100, 2);
+
+                                if ($percent < 40) {
+                                    $color = 'text-red-600';
+                                } elseif ($percent < 70) {
+                                    $color = 'text-yellow-500';
+                                } else {
+                                    $color = 'text-green-600';
+                                }
+                            @endphp
+                            <td class="w-32 px-10 font-bold {{ $color }}">{{ round((1/$level->attempt)*100, 2) }} %</td>
                             @if($level->completed == 0)
                                 <td class="w-4 px-7">En cours</td>
                             @else
