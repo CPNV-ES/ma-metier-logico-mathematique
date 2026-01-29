@@ -22,7 +22,7 @@
 
     <form method="POST" action="{{ route('teacher.logout') }}">
         @csrf
-        <button type="submit" class="m-3 px-7 py-2 bg-retour text-white rounded-2xl w-35 hover:bg-retour_hover w-auto">&#8592 Déconnexion</button>
+        <button type="submit" class="m-3 px-7 py-2 bg-retour text-white rounded-2xl w-35 hover:bg-retour_hover active:bg-retour_hover w-auto">&#8592 Déconnexion</button>
     </form>
 
     <h1 class="text-5xl text-center m-5">Espace maîtres(ses)</h1>
@@ -43,8 +43,8 @@
 
     <!-- Boutons pour choisir quoi faire -->
     <div class="flex flex-wrap justify-center min-w-screen w-full">
-        <button class="bg-classe_eleve mx-20 my-10 text-[40px] h-26 w-full text-center rounded-xl hover:bg-classe_eleve_hover" onclick="window.location='{{route('teacher.schoolclass_gestion')}}'">Gestions des classes et des élèves</button>
-        <button class="bg-exercices mx-20 my-10 text-[40px] h-26 text-center w-full rounded-xl hover:bg-exercices_hover">Gestions des exercices</button>
+        <button class="bg-classe_eleve mx-20 my-10 text-[40px] h-26 w-full text-center rounded-xl hover:bg-classe_eleve_hover active:bg-classe_eleve_hover" onclick="window.location='{{route('teacher.schoolclass_gestion')}}'">Gestions des classes et des élèves</button>
+        <button class="bg-exercices mx-20 my-10 text-[40px] h-26 text-center w-full rounded-xl hover:bg-exercices_hover active:bg-exercices_hover">Gestions des exercices</button>
         {{-- A revoir selon le nom donné au champ
             @if ( auth('teacher')->user()->isAdmin == True)
                 <button class="bg-enseignant mx-20 my-10 text-[40px] h-26 w-full text-center rounded-xl hover:bg-enseignant_hover">Gestion des comptes enseignants</button>
