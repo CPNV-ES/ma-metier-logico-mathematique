@@ -15,7 +15,9 @@
             --color-filtre: #52BDFF;
             --color-filtre_hover: #0093EE;
             --color-notification: #db5b005d;
-            --color-classe_hover: #ffe553ff;
+            --color-classe_hover: #ffaf1bff;
+            --color-classe: #ffd257ff;
+            --color-border: #70350eff;
             }
     body {background-color :#FFF4B8;}
     </style>
@@ -67,11 +69,11 @@
                     </select>
                     <button type="submit" class="ml-5 bg-filtre hover:bg-filtre_hover hover:text-white active:bg-filtre_hover active:text-white py-1 px-5 rounded-sm">Filtrer</button>
             </form>
-            <table class="flex flex-wrap my-3 justify-center">
+            <table class="flex flex-wrap my-3 justify-center rounded-md">
                     @foreach($schoolClasses as $schoolClass)
-                        <tr class="border hover:bg-classe_hover active:bg-classe_hover">
-                            <td class="border min-w-40 min-h-20 px-5 py-1"><a href="{{ route('teacher.student_gestion',['id'=>$schoolClass->id])}}">{{$schoolClass->name}}</a></td>
-                            <td class="min-w-20 text-center py-1"><a href="{{ route('teacher.student_gestion',['id'=>$schoolClass->id])}}">{{$schoolClass->class_code}}</a></td>
+                        <tr class="bg-classe border border-border hover:bg-classe_hover active:bg-classe_hover">
+                            <td class="border border-border min-w-40 min-h-20 px-5 py-1"><a href="{{ route('teacher.student_gestion',['id'=>$schoolClass->id])}}">{{$schoolClass->name}}</a></td>
+                            <td class="min-w-20 border border-border text-center py-1"><a href="{{ route('teacher.student_gestion',['id'=>$schoolClass->id])}}">{{$schoolClass->class_code}}</a></td>
                         </tr>
                     @endforeach
             </table>

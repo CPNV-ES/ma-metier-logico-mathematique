@@ -11,11 +11,13 @@
             --color-retour_hover: #B74D01;
             --color-ajouter: #8EED72;
             --color-ajouter_hover: #2DC300;
-            --color-eleves_hover: #ffe553ff;
             --color-supprimer: #EA0000;
             --color-supprimer_hover: #c70000ff;
             --color-modifier: #DBB000;
             --color-modifier_hover: #b38f00ff;
+            --color-eleves_hover: #ffaf1bff;
+            --color-eleves: #ffd257ff;
+            --color-border: #70350eff;
             }
     body {background-color :#FFF4B8;}
     </style>
@@ -89,9 +91,9 @@
             <!-- Affiche les élèves (à modifier) -->
             <table class="flex flex-wrap max-w-80 my-3">
                 @foreach($students as $student)
-                    <tr class="border hover:bg-eleves_hover active:bg-eleves_hover">
-                        <td class="border min-w-40 min-h-20 px-5 py-1"><a href="{{ route('teacher.student', ['schoolClass'=>$schoolClass, 'student'=>$student])}}">{{$student->first_name}}</a></td>
-                        <td class="border min-w-40 min-h-20 px-5 py-1"><a href="{{ route('teacher.student', ['schoolClass'=>$schoolClass, 'student'=>$student])}}">{{$student->last_name}}</a></td>
+                    <tr class="bg-eleves border border-border hover:bg-eleves_hover active:bg-eleves_hover">
+                        <td class="border border-border min-w-40 min-h-20 px-5 py-1"><a href="{{ route('teacher.student', ['schoolClass'=>$schoolClass, 'student'=>$student])}}">{{$student->first_name}}</a></td>
+                        <td class="border border-border min-w-40 min-h-20 px-5 py-1"><a href="{{ route('teacher.student', ['schoolClass'=>$schoolClass, 'student'=>$student])}}">{{$student->last_name}}</a></td>
                     </tr>
                 @endforeach
             </table>
